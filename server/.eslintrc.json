@@ -13,6 +13,7 @@
         "no-var": "warn",
         "linebreak-style": 0,
         "comma-dangle": 0,
-        "operator-linebreak": 0
+        "operator-linebreak": 0,
+        "object-curly-newline": 0
     }
 }
