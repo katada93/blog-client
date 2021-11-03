@@ -19,11 +19,13 @@ const postSchema = mongoose.Schema(
       ref: 'User',
       required: true,
     },
-    category: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Category',
-      required: true,
-    },
+    category: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Category',
+        required: true,
+      },
+    ],
     likes: [
       {
         type: mongoose.SchemaTypes.ObjectId,

@@ -1,0 +1,43 @@
+.post {
+  width: 50%;
+  padding: 20px;
+}
+
+.post__img {
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+.post__tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.post__tag {
+  padding: 5px 17px;
+  background-color: #1c1c1c;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.post__title {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 41px;
+  margin-bottom: 10px;
+}
+
+.post__date {
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(28, 28, 28, 0.5);
+  margin-bottom: 15px;
+}
+
+.post__text {
+  font-size: 16px;
+  line-height: 24px;
+}
