@@ -10,19 +10,19 @@ const Header = () => {
       <nav className='nav'>
         <ul className='nav-list'>
           <li className='nav-item'>
-            <a href='/'>Home</a>
+            <a href='/'>Главная</a>
           </li>
           <li className='nav-item'>
-            <a href='/tags'>Tags</a>
+            <a href='/tags'>Категории</a>
           </li>
           <li className='nav-item'>
-            <a href='/about'>About</a>
+            <a href='/about'>О нас</a>
           </li>
         </ul>
       </nav>
       <div className='actions'>
         <input className='search' type='text' />
-        <button className='login'>Login</button>
+        <button className='login'>Войти</button>
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import { Switch, Route } from 'react-router-dom';
-
 import Home from './pages/Home/Home';
 import Tags from './pages/Tags/Tags';
 import Header from './components/Header/Header';
-import Posts from './components/Posts/Posts';
 import './App.css';
 import About from './pages/About/About';
+import Auth from './pages/Auth/Auth';
+import Postpage from './pages/Home/Postpage/Postpage';
 
 function App() {
   return (
@@ -14,14 +14,20 @@ function App() {
         <Header />
 
         <Switch>
+          <Route path='/' exact>
+            <Home />
+          </Route>
           <Route path='/about'>
             <About />
           </Route>
           <Route path='/tags'>
             <Tags />
           </Route>
-          <Route path='/'>
-            <Home />
+          <Route path='/auth'>
+            <Auth />
+          </Route>
+          <Route path='/post/:id'>
+            <Postpage />
           </Route>
         </Switch>
       </div>

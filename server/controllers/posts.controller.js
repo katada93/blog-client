@@ -29,7 +29,9 @@ module.exports.postsController = {
 
   getAll: async (_, res) => {
     try {
-      const posts = await PostModel.find();
+      const posts = await PostModel.find()
+        .populate('user', 'name email img')
+        .populate('category', 'name');
 
       return res.status(200).json(posts);
     } catch (error) {

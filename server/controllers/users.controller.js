@@ -1,10 +1,18 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/User.model');
+const { validationResult } = require('express-validator');
 
 module.exports.usersController = {
   register: async (req, res) => {
     const body = req.body;
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .json({ message: 'Ошибка при регистрации', errors: errors.array() });
+    }
 
     try {
       const candidate = await UserModel.findOne({ email: body.email });
@@ -38,7 +46,7 @@ module.exports.usersController = {
       if (!candidate) {
         return res
           .status(404)
-          .json({ message: `Пользователь с таким ${email} не найден!` });
+          .json({ message: 'Пользователь с таким email не найден!' });
       }
 
       const validPassword = bcrypt.compareSync(password, candidate.password);
@@ -49,7 +57,7 @@ module.exports.usersController = {
 
       const token = jwt.sign(
         { email: candidate.email, userId: candidate._id },
-        process.env.JWT,
+        process.env.SECRET_KEY,
         { expiresIn: '24h' }
       );
 
