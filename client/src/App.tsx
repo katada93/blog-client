@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import './App.css';
 import About from './pages/About/About';
 import Auth from './pages/Auth/Auth';
-import Postpage from './pages/Home/Postpage/Postpage';
+import Postpage from './pages/Postpage/Postpage';
 
 function App() {
   return (
@@ -17,10 +17,10 @@ function App() {
           <Route path='/' exact>
             <Home />
           </Route>
-          <Route path='/about'>
+          <Route path='/about' exact>
             <About />
           </Route>
-          <Route path='/tags'>
+          <Route path='/tags' exact>
             <Tags />
           </Route>
           <Route path='/auth'>

@@ -1,21 +1,26 @@
 import './Post.css';
-import { IPost } from '../Posts';
+import moment from 'moment';
+import { IPost } from '../../../types';
 
 const Post: React.FC<IPost> = (props) => {
-  console.log(props);
+  const { title, category, description, img, createdAt, likes, user } = props;
+
   return (
     <div className='post'>
-      <img className='post__img' src={props.img} alt='Post' />
+      <img className='post__img' src={img} alt='Post' />
       <ul className='post__tags'>
-        {props.category.map((item) => (
+        {category.map((item) => (
           <li className='post__tag' key={item._id}>
             {item.name}
           </li>
         ))}
       </ul>
-      <h3 className='post__title'>{props.title}</h3>
-      <p className='post__date'>{props.createdAt}</p>
-      <div className='post__text'>{props.description}</div>
+      <h3 className='post__title'>{title}</h3>
+      <p className='post__date'>
+        <a href='/'>{user.name}</a> |
+        <span> {moment(createdAt).format('MMMM Do YYYY, h:mm')}</span>
+      </p>
+      <div className='post__text'>{description}</div>
     </div>
   );
 };

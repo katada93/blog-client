@@ -1,29 +1,8 @@
 import { useEffect, useState } from 'react';
-import { userAPI } from '../../api/api';
+import { userAPI } from '../../api';
+import { IPost } from '../../types';
 import Post from './Post/Post';
 import './Posts.css';
-
-interface IUser {
-  _id: string;
-  name: string;
-  email: string;
-  img?: string;
-}
-
-interface Category {
-  name: string;
-  _id: string;
-}
-export interface IPost {
-  _id: string;
-  title: string;
-  description: string;
-  img?: string;
-  user: IUser;
-  category: Category[];
-  likes: string[];
-  createdAt: string;
-}
 
 const Posts = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
