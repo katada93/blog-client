@@ -1,16 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { userAPI } from '../../api';
+import { IPost } from '../../types';
 
 interface IPostPageParams {
-  id: string | undefined;
+  id: string;
 }
 
-const Postpage = () => {
+const Postpage: React.FC = () => {
   const { id } = useParams<IPostPageParams>();
+  const [post, setPost] = useState<IPost | null>(null);
+
   useEffect(() => {
-    console.log(id);
-  }, []);
-  return <div>Single post page</div>;
+    userAPI.getPostById(id).then(({ data }) => setPost(data));
+  }, [id]);
+  return (
+    <div className='post_page'>
+      <img src={post?.img} alt='' />
+      <h3>{post?.title}</h3>
+    </div>
+  );
 };
 
 export default Postpage;

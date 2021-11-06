@@ -14,4 +14,6 @@ const instance = axios.create({
 export const userAPI = {
   getPosts: (): Promise<AxiosResponse<IPost[]>> =>
     instance.get('posts').then((res) => res),
+  getPostById: (postId: string): Promise<AxiosResponse<IPost>> => 
+    instance.get(`posts/${postId}`).then(res => res)
 };

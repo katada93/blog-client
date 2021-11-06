@@ -4,8 +4,9 @@ import { IPost } from '../../types';
 import Post from './Post/Post';
 import './Posts.css';
 
-const Posts = () => {
+const Posts: React.FC = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
+
   useEffect(() => {
     userAPI.getPosts().then(({ data }) => setPosts(data));
   }, []);
