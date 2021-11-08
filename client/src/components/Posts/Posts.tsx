@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { userAPI } from '../../api';
+import API from '../../api';
 import { IPost } from '../../types';
-import Post from './Post/Post';
+import Post from '../Post/Post';
 import './Posts.css';
 
 const Posts: React.FC = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
 
   useEffect(() => {
-    userAPI.getPosts().then(({ data }) => setPosts(data));
+    API.getPosts().then(({ data }) => setPosts(data));
   }, []);
   return (
     <ul className='posts'>

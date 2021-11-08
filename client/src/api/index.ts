@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
-import { IPost } from '../types';
+import { IComment, IPost } from '../types';
 
 
 
@@ -11,9 +11,13 @@ const instance = axios.create({
   },
 });
 
-export const userAPI = {
+const API = {
   getPosts: (): Promise<AxiosResponse<IPost[]>> =>
     instance.get('posts').then((res) => res),
   getPostById: (postId: string): Promise<AxiosResponse<IPost>> => 
-    instance.get(`posts/${postId}`).then(res => res)
+    instance.get(`posts/${postId}`).then(res => res),
+  getComments: (id: string): Promise<AxiosResponse<IComment[]>> =>
+    instance.get(`/comments/${id}`).then(res => res)
 };
+
+export default API

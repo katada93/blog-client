@@ -1,6 +1,6 @@
 import './Post.css';
 import moment from 'moment';
-import { IPost } from '../../../types';
+import { IPost } from '../../types';
 import { Link } from 'react-router-dom';
 
 const Post: React.FC<IPost> = (props) => {
@@ -20,11 +20,11 @@ const Post: React.FC<IPost> = (props) => {
         ))}
       </ul>
       <h3 className='post__title'>{title}</h3>
-      <p className='post__date'>
+      <p className='post__info'>
         <a href='/'>{user.name}</a> |
         <span> {moment(createdAt).format('MMMM Do YYYY, h:mm')}</span>
       </p>
-      <div className='post__text'>{description}</div>
+      <p className='post__text'>{description}</p>
     </div>
   );
 };

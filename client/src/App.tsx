@@ -10,27 +10,25 @@ import Postpage from './pages/Postpage/Postpage';
 function App() {
   return (
     <div className='app'>
-      <div className='container'>
-        <Header />
+      <Header />
 
-        <Switch>
-          <Route path='/' exact>
-            <Home />
-          </Route>
-          <Route path='/about' exact>
-            <About />
-          </Route>
-          <Route path='/tags' exact>
-            <Tags />
-          </Route>
-          <Route path='/auth'>
-            <Auth />
-          </Route>
-          <Route path='/post/:id'>
-            <Postpage />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path='/' exact>
+          <Home />
+        </Route>
+        <Route path='/about' exact>
+          <About />
+        </Route>
+        <Route path='/tags' exact>
+          <Tags />
+        </Route>
+        <Route path='/auth'>
+          <Auth />
+        </Route>
+        <Route path='/post/:id'>
+          <Postpage />
+        </Route>
+      </Switch>
     </div>
   );
 }

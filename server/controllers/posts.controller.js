@@ -1,8 +1,17 @@
+const { validationResult } = require('express-validator');
 const PostModel = require('../models/Post.model');
 
 module.exports.postsController = {
   create: async (req, res) => {
     const body = req.body;
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        message: 'Ошибка при созаднии поста',
+        errors: errors.array(),
+      });
+    }
 
     try {
       const post = await PostModel.create(body);
