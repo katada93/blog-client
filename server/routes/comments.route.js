@@ -8,6 +8,8 @@ router.get('/:id', commentsController.getAllByPost);
 router.post(
   '/',
   body('text', 'Комментарий не может быть пустым.').notEmpty(),
+  body('user', 'Не указан ID юзера.').notEmpty(),
+  body('post', 'Не указан ID поста.').notEmpty(),
   commentsController.create
 );
 router.delete('/:id', commentsController.remove);

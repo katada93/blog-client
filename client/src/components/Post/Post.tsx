@@ -8,7 +8,7 @@ const Post: React.FC<IPost> = (props) => {
     props;
 
   return (
-    <div className='post'>
+    <li className='post'>
       <Link to={`/post/${_id}`}>
         <img className='post__img' src={img} alt='Post' />
       </Link>
@@ -22,10 +22,10 @@ const Post: React.FC<IPost> = (props) => {
       <h3 className='post__title'>{title}</h3>
       <p className='post__info'>
         <a href='/'>{user.name}</a> |
-        <span> {moment(createdAt).format('MMMM Do YYYY, h:mm')}</span>
+        <span> {moment(createdAt).format('MMMM Do YYYY, h:mm a')}</span>
       </p>
       <p className='post__text'>{description}</p>
-    </div>
+    </li>
   );
 };
 

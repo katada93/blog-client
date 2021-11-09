@@ -6,6 +6,8 @@ import './App.css';
 import About from './pages/About/About';
 import Auth from './pages/Auth/Auth';
 import Postpage from './pages/Postpage/Postpage';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './features/store';
 
 function App() {
   return (

@@ -4,11 +4,12 @@
 
 .post_page .post__tags {
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .post_page__img {
-  margin-bottom: 60px;
+  width: 70%;
+  margin: 0 auto 60px;
   border-radius: 5px;
 }
 
@@ -35,7 +36,7 @@
 
 .post_page__description {
   max-width: 650px;
-  margin: 0 auto 70px;
+  margin: 0 auto 40px;
   line-height: 24px;
 }
 
@@ -48,9 +49,15 @@
 }
 
 .post_author__img {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+}
+
+.post_author__info {
+  display: flex;
+  column-gap: 20px;
+  align-items: baseline;
 }
 
 .post_author__name {
@@ -58,6 +65,7 @@
   font-weight: 700;
   font-size: 33px;
   line-height: 40px;
+  padding: 0;
 }
 
 .post_author__email {

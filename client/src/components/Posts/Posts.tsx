@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
-import API from '../../api';
-import { IPost } from '../../types';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from '../../features/posts';
+import { RootState } from '../../features/store';
 import Post from '../Post/Post';
 import './Posts.css';
 
 const Posts: React.FC = () => {
-  const [posts, setPosts] = useState<IPost[]>([]);
+  const dispatch = useDispatch();
+  const { data } = useSelector(({ posts }: RootState) => posts);
 
   useEffect(() => {
-    API.getPosts().then(({ data }) => setPosts(data));
-  }, []);
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
   return (
     <ul className='posts'>
-      {posts.map((post) => {
+      {data.map((post) => {
         return <Post key={post._id} {...post} />;
       })}
     </ul>

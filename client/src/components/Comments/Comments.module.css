@@ -1,0 +1,47 @@
+.comments {
+  max-width: 650px;
+  margin: 50px auto 0;
+}
+
+.sendForm {
+  border: 1px solid rgba(28, 28, 28, 0.5);
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.sendBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.write {
+  border: none;
+  padding: 10px;
+  width: 80%;
+  font-size: 16px;
+}
+
+.write:focus {
+  outline: none;
+}
+
+.write::placeholder {
+  color: rgba(28, 28, 28, 0.5);
+}
+
+.sendBtn img {
+  width: 40px;
+  height: auto;
+}
+
+.commentCount {
+  color: rgba(28, 28, 28, 0.5);
+  margin-bottom: 20px;
+  display: block;
+  text-align: right;
+  font-weight: 700;
+}

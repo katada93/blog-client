@@ -17,7 +17,9 @@ const API = {
   getPostById: (postId: string): Promise<AxiosResponse<IPost>> => 
     instance.get(`posts/${postId}`).then(res => res),
   getComments: (id: string): Promise<AxiosResponse<IComment[]>> =>
-    instance.get(`/comments/${id}`).then(res => res)
+    instance.get(`/comments/${id}`).then(res => res),
+  sendMessage: (text: string, user: string, post: string): Promise<AxiosResponse<IComment>> => 
+    instance.post('comments', {text, user, post}).then(res => res)
 };
 
 export default API

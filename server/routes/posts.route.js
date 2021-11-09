@@ -10,6 +10,8 @@ router.post(
   '/',
   body('title', 'Заголовок поста не может быть пустым.').notEmpty(),
   body('description', 'Текст поста не может быть пустым.').notEmpty(),
+  body('user', 'Не указан ID юзера.').notEmpty(),
+  body('category', 'Не указан ID категории.').notEmpty(),
   postsController.create
 );
 router.delete('/:id', postsController.remove);
