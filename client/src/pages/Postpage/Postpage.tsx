@@ -1,9 +1,10 @@
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import API from '../../api';
 import Comments from '../../components/Comments/Comments';
-import { IComment, IPost } from '../../types';
+import { fetchOnePost } from '../../features/slices/post';
+import { AppDispatch, RootState } from '../../features/store';
 import './Postpage.css';
 
 interface IPostPageParams {
@@ -12,22 +13,28 @@ interface IPostPageParams {
 
 const Postpage: React.FC = () => {
   const { id } = useParams<IPostPageParams>();
-  const [post, setPost] = useState<IPost | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
+  const { post, loading, error, comments } = useSelector(
+    ({ post }: RootState) => post
+  );
+  console.log(post);
 
   useEffect(() => {
-    API.getPostById(id).then(({ data }) => setPost(data));
-  }, [id]);
+    dispatch(fetchOnePost(id));
+  }, [dispatch, id]);
+
   return (
-    <div className='post_page'>
+    <>
+      {loading && <h1>Loading post...</h1>}
+      {error && <h1>{error}</h1>}
+
       {post && (
-        <>
-          <img className='post_page__img' src={post?.img} alt='' />
-          <h1 className='post_page__title'>{post?.title}</h1>
+        <div className='post_page'>
+          <img className='post_page__img' src={post.img} alt='' />
+          <h1 className='post_page__title'>{post.title}</h1>
           <p className='post_page__info'>
             <a href='/'>{post.user.name}</a> |
-            <span>
-              {moment(post?.createdAt).format('MMMM Do YYYY, h:mm a')}
-            </span>
+            <span>{moment(post.createdAt).format('MMMM Do YYYY, h:mm a')}</span>
           </p>
           <ul className='post__tags'>
             {post.category.map((item) => (
@@ -44,16 +51,16 @@ const Postpage: React.FC = () => {
               alt='Post author'
             />
             <div className='post_author__info'>
-              <h3 className='post_author__name'>{post?.user.name}</h3>
+              <h3 className='post_author__name'>{post.user.name}</h3>
               <a className='post_author__email' href='/'>
                 {`@${post.user.email}`}
               </a>
             </div>
           </div>
           <Comments postId={id} userId={post.user._id} />
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

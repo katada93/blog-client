@@ -6,8 +6,6 @@ import './App.css';
 import About from './pages/About/About';
 import Auth from './pages/Auth/Auth';
 import Postpage from './pages/Postpage/Postpage';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './features/store';
 
 function App() {
   return (
@@ -27,7 +25,7 @@ function App() {
         <Route path='/auth'>
           <Auth />
         </Route>
-        <Route path='/post/:id'>
+        <Route path='/post/:id' exact>
           <Postpage />
         </Route>
       </Switch>

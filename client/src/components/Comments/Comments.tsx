@@ -13,7 +13,6 @@ interface ICommentsProps {
 const Comments: React.FC<ICommentsProps> = ({ postId, userId }) => {
   const [value, setValue] = useState('');
   const [items, setItems] = useState<IComment[]>([]);
-  console.log(items);
 
   useEffect(() => {
     API.getComments(postId).then(({ data }) => setItems(data));
