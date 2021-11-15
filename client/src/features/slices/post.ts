@@ -15,21 +15,21 @@ export const fetchOnePost = createAsyncThunk(
   }
 );
 
-interface IPostsState {
+interface IPostState {
   post: IPost | null;
   loading: boolean;
   error: string;
   comments: IComment[];
 }
 
-const initialState: IPostsState = {
+const initialState: IPostState = {
   post: null,
   loading: false,
   error: '',
   comments: [],
 };
 
-export const postsSlice = createSlice({
+export const postSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {},
@@ -49,6 +49,6 @@ export const postsSlice = createSlice({
   },
 });
 
-// export const {} = postsSlice.actions;
+// export const {} = postSlice.actions;
 
-export default postsSlice.reducer;
+export default postSlice.reducer;

@@ -17,7 +17,6 @@ const Postpage: React.FC = () => {
   const { post, loading, error, comments } = useSelector(
     ({ post }: RootState) => post
   );
-  console.log(post);
 
   useEffect(() => {
     dispatch(fetchOnePost(id));

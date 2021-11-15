@@ -22,7 +22,7 @@ function App() {
         <Route path='/tags' exact>
           <Tags />
         </Route>
-        <Route path='/auth'>
+        <Route path='/auth' exact>
           <Auth />
         </Route>
         <Route path='/post/:id' exact>

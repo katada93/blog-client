@@ -22,6 +22,8 @@ const API = {
     post: string
   ): Promise<AxiosResponse> =>
     instance.post('comments', { text, user, post }).then((res) => res),
+  login: (email: string, password: string): Promise<AxiosResponse> =>
+    instance.post('auth/login', { email, password }).then((res) => res),
 };
 
 export default API;

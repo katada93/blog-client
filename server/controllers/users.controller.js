@@ -32,7 +32,10 @@ module.exports.usersController = {
         password: hashedPassword,
       });
 
-      return res.status(201).json('Пользователь успешно зарегистрирован!');
+      return res.status(201).json({
+        status: 'success',
+        message: 'Пользователь успешно зарегистрирован!',
+      });
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
@@ -61,7 +64,15 @@ module.exports.usersController = {
         { expiresIn: '24h' }
       );
 
-      return res.status(200).json({ token: `Bearer ${token}` });
+      return res.status(200).json({
+        token: `Bearer ${token}`,
+        user: {
+          _id: candidate._id,
+          email: candidate.email,
+          name: candidate.name,
+          img: candidate.img,
+        },
+      });
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
