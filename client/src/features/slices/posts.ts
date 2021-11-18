@@ -18,7 +18,7 @@ export const fetchPosts = createAsyncThunk(
 interface IPostsState {
   data: IPost[];
   loading: boolean;
-  error: string;
+  error: string | Error;
 }
 
 const initialState: IPostsState = {
@@ -33,6 +33,7 @@ export const postsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchPosts.pending.type]: (state) => {
+      state.data = [];
       state.loading = true;
     },
     [fetchPosts.fulfilled.type]: (state, action: PayloadAction<IPost[]>) => {

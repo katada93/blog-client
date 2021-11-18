@@ -3,7 +3,7 @@ import API from '../../api';
 import { IComment, IPost } from '../../types';
 
 export const fetchOnePost = createAsyncThunk(
-  'posts/fetchOnePost',
+  'post/fetchOnePost',
   async (id: string, thunkAPI) => {
     try {
       const response = await API.getPostById(id);
@@ -18,7 +18,7 @@ export const fetchOnePost = createAsyncThunk(
 interface IPostState {
   post: IPost | null;
   loading: boolean;
-  error: string;
+  error: string | Error;
   comments: IComment[];
 }
 

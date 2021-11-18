@@ -3,7 +3,7 @@ import React from 'react';
 import { IComment } from '../../types';
 import cl from './Comment.module.css';
 
-const Comment: React.FC<IComment> = ({ text, user, post, createdAt }) => {
+const Comment: React.FC<IComment> = ({ text, user, createdAt }) => {
   return (
     <li className={cl.comment}>
       <img className={cl.img} src={user.img} alt='Comment author' />

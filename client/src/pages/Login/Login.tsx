@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../features/slices/authSlice';
 import { AppDispatch, RootState } from '../../features/store';
-import cl from './Auth.module.css';
+import cl from './Login.module.css';
 
 const Auth = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,7 +19,7 @@ const Auth = () => {
     const email = target.email.value;
     const password = target.password.value;
 
-    dispatch(login(email, password));
+    dispatch(login({ email, password }));
 
     target.email.value = '';
     target.password.value = '';
@@ -27,7 +27,7 @@ const Auth = () => {
 
   return (
     <div className={cl.auth}>
-      <h1 className={cl.title}>Login</h1>
+      <h1 className={cl.title}>Авторизация</h1>
       <form onSubmit={onSubmit}>
         <label>
           <span>email: </span>

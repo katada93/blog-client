@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from 'axios';
-import { IComment, IPost } from '../types';
 
 const instance = axios.create({
   baseURL: 'http://localhost:5000/api/',
@@ -10,11 +9,11 @@ const instance = axios.create({
 });
 
 const API = {
-  getPosts: (): Promise<AxiosResponse<IPost[]>> =>
+  getPosts: (): Promise<AxiosResponse> =>
     instance.get('posts').then((res) => res),
-  getPostById: (postId: string): Promise<AxiosResponse<IPost>> =>
+  getPostById: (postId: string): Promise<AxiosResponse> =>
     instance.get(`posts/${postId}`).then((res) => res),
-  getComments: (id: string): Promise<AxiosResponse<IComment[]>> =>
+  getComments: (id: string): Promise<AxiosResponse> =>
     instance.get(`/comments/${id}`).then((res) => res),
   sendMessage: (
     text: string,
@@ -24,6 +23,7 @@ const API = {
     instance.post('comments', { text, user, post }).then((res) => res),
   login: (email: string, password: string): Promise<AxiosResponse> =>
     instance.post('auth/login', { email, password }).then((res) => res),
+  me: () => instance.get('/auth/me').then((res) => res),
 };
 
 export default API;

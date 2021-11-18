@@ -43,6 +43,7 @@ module.exports.usersController = {
 
   login: async (req, res) => {
     const { email, password } = req.body;
+
     try {
       const candidate = await UserModel.findOne({ email });
 
@@ -59,12 +60,15 @@ module.exports.usersController = {
       }
 
       const token = jwt.sign(
-        { email: candidate.email, userId: candidate._id },
+        {
+          userId: candidate._id,
+        },
         process.env.SECRET_KEY,
         { expiresIn: '24h' }
       );
 
       return res.status(200).json({
+        status: 'success',
         token: `Bearer ${token}`,
         user: {
           _id: candidate._id,
@@ -72,6 +76,22 @@ module.exports.usersController = {
           name: candidate.name,
           img: candidate.img,
         },
+      });
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  },
+  me: async (req, res) => {
+    const { userId } = req.user;
+
+    try {
+      const user = await UserModel.findById(userId);
+
+      return res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        img: user.img,
       });
     } catch (error) {
       return res.status(500).json({ message: error.message });

@@ -1,8 +1,14 @@
+import { useHistory } from 'react-router';
 import './Header.css';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../features/store';
 
 const Header = () => {
+  const history = useHistory();
+  const { isAuth, user } = useSelector(({ auth }: RootState) => auth);
+
   return (
     <div className='header'>
       <Link className='logo' to='/'>
@@ -23,7 +29,13 @@ const Header = () => {
       </nav>
       <div className='actions'>
         <input className='search' type='text' />
-        <button className='login'>Войти</button>
+        {isAuth ? (
+          <span>{user.name}</span>
+        ) : (
+          <button onClick={() => history.push('/login')} className='login'>
+            Войти
+          </button>
+        )}
       </div>
     </div>
   );
