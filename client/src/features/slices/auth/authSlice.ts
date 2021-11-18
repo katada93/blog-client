@@ -1,14 +1,12 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import API from '../../api';
-import { IUser } from '../../types';
+import API from '../../../api';
+import { IUser } from '../../../types';
 
 export const login = createAsyncThunk(
   'auth/login',
   async (params: { email: string; password: string }, thunkAPI) => {
     try {
       const response = await API.login(params.email, params.password);
-
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

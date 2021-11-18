@@ -1,36 +1,37 @@
 import { useHistory } from 'react-router';
 import './Header.css';
 import logo from '../../assets/logo.png';
+import { IUser } from '../../types';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../features/store';
 
-const Header = () => {
+interface IHeaderProps {
+  isAuth: boolean;
+  user: IUser;
+}
+
+const Header: React.FC<IHeaderProps> = ({ isAuth, user }) => {
   const history = useHistory();
-  const { isAuth, user } = useSelector(({ auth }: RootState) => auth);
 
   return (
     <div className='header'>
-      <Link className='logo' to='/'>
-        <img src={logo} alt='Logo' />
-      </Link>
+      <img className='logo' src={logo} alt='Logo' />
       <nav className='nav'>
         <ul className='nav-list'>
           <li className='nav-item'>
-            <a href='/'>Главная</a>
+            <Link to='/'>Главная</Link>
           </li>
           <li className='nav-item'>
-            <a href='/tags'>Категории</a>
+            <Link to='/tags'>Категории</Link>
           </li>
           <li className='nav-item'>
-            <a href='/about'>О нас</a>
+            <Link to='/about'>О нас</Link>
           </li>
         </ul>
       </nav>
       <div className='actions'>
         <input className='search' type='text' />
         {isAuth ? (
-          <span>{user.name}</span>
+          <img className='header__avatar' src={user.img} alt='User' />
         ) : (
           <button onClick={() => history.push('/login')} className='login'>
             Войти

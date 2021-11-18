@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../features/slices/authSlice';
+import { Redirect } from 'react-router';
+import { login } from '../../features/slices/auth/authSlice';
 import { AppDispatch, RootState } from '../../features/store';
 import cl from './Login.module.css';
 
@@ -9,6 +10,10 @@ const Auth = () => {
   const { isAuth, user } = useSelector(({ auth }: RootState) => auth);
 
   console.log(isAuth, user);
+
+  if (isAuth) {
+    return <Redirect to='/' />;
+  }
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

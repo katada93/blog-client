@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts } from '../../features/slices/posts';
+import { fetchPosts } from '../../features/slices/posts/postsSlice';
 import { AppDispatch, RootState } from '../../features/store';
 import Post from '../Post/Post';
 import './Posts.css';
@@ -13,17 +13,24 @@ const Posts: React.FC = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
-  return (
-    <>
-      {loading && <h1>Loading posts...</h1>}
-      {error && <h1>{error}</h1>}
+  const view = useMemo(() => {
+    if (loading) {
+      return <h1>Loading posts...</h1>;
+    }
+    if (error) {
+      return <h1>{error}</h1>;
+    }
+
+    return (
       <ul className='posts'>
         {data.map((post) => {
           return <Post key={post._id} {...post} />;
         })}
       </ul>
-    </>
-  );
+    );
+  }, [loading, error, data]);
+
+  return <>{view}</>;
 };
 
 export default Posts;

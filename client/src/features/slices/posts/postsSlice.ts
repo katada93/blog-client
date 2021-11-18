@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import API from '../../api';
-import { IPost } from '../../types';
+import API from '../../../api';
+import { IPost } from '../../../types';
 
 export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
@@ -33,7 +33,6 @@ export const postsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchPosts.pending.type]: (state) => {
-      state.data = [];
       state.loading = true;
     },
     [fetchPosts.fulfilled.type]: (state, action: PayloadAction<IPost[]>) => {
