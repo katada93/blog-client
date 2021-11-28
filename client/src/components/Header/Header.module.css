@@ -10,12 +10,12 @@
   max-width: 180px;
 }
 
-.nav-list {
+.navList {
   display: flex;
   gap: 20px;
 }
 
-.nav-item a {
+.navItem a {
   font-family: 'Libre Baskerville', serif;
   font-size: 20px;
   line-height: 25px;
@@ -64,7 +64,7 @@
   width: 360px;
 }
 
-.header__avatar {
+.headerAvatar {
   width: 60px;
   height: 60px;
   border-radius: 50%;

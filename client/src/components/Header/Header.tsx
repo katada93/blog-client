@@ -1,8 +1,8 @@
 import { useHistory } from 'react-router';
-import './Header.css';
 import logo from '../../assets/logo.png';
 import { IUser } from '../../types';
 import { Link } from 'react-router-dom';
+import cl from './Header.module.css';
 
 interface IHeaderProps {
   isAuth: boolean;
@@ -13,27 +13,27 @@ const Header: React.FC<IHeaderProps> = ({ isAuth, user }) => {
   const history = useHistory();
 
   return (
-    <div className='header'>
-      <img className='logo' src={logo} alt='Logo' />
-      <nav className='nav'>
-        <ul className='nav-list'>
-          <li className='nav-item'>
+    <div className={cl.header}>
+      <img className={cl.logo} src={logo} alt='Logo' />
+      <nav className={cl.nav}>
+        <ul className={cl.navList}>
+          <li className={cl.navItem}>
             <Link to='/'>Главная</Link>
           </li>
-          <li className='nav-item'>
+          <li className={cl.navItem}>
             <Link to='/tags'>Категории</Link>
           </li>
-          <li className='nav-item'>
+          <li className={cl.navItem}>
             <Link to='/about'>О нас</Link>
           </li>
         </ul>
       </nav>
-      <div className='actions'>
-        <input className='search' type='text' />
+      <div className={cl.actions}>
+        <input className={cl.search} type='text' />
         {isAuth ? (
-          <img className='header__avatar' src={user.img} alt='User' />
+          <img className={cl.headerAvatar} src={user.img} alt='User' />
         ) : (
-          <button onClick={() => history.push('/login')} className='login'>
+          <button onClick={() => history.push('/login')} className={cl.login}>
             Войти
           </button>
         )}

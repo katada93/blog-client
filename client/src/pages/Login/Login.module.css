@@ -1,0 +1,58 @@
+.loginForm {
+  max-width: 350px;
+  margin: 150px auto 0;
+  text-align: center;
+}
+
+.loginForm input {
+  padding: 10px;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  border-radius: 10px;
+  border: 2px solid #1c1c1c;
+}
+
+.loginForm input::placeholder {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(28, 28, 28, 0.5);
+}
+
+.title {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 60px;
+  margin-bottom: 30px;
+}
+
+.errorText {
+  color: #ec4545;
+  margin-bottom: 10px;
+}
+
+.login {
+  margin-top: 30px;
+  padding: 10px 0;
+  width: 100%;
+
+  font-family: 'Libre Baskerville', serif;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+
+  color: #1c1c1c;
+  background-color: transparent;
+  border: 2px solid #1c1c1c;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: #1c1c1c;
+  color: #fff;
+}

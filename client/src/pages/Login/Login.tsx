@@ -1,50 +1,67 @@
-import React from 'react';
+import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { login } from '../../features/slices/auth/authSlice';
 import { AppDispatch, RootState } from '../../features/store';
+import { loginValidator } from '../../utils/validators';
 import cl from './Login.module.css';
 
-const Auth = () => {
+interface ILogin {
+  email: string;
+  password: string;
+}
+
+const Auth: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { isAuth, user } = useSelector(({ auth }: RootState) => auth);
 
-  console.log(isAuth, user);
+  console.log(user);
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: loginValidator,
+    onSubmit: ({ email, password }: ILogin) => {
+      dispatch(login({ email, password }));
+    },
+  });
 
   if (isAuth) {
     return <Redirect to='/' />;
   }
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-      email: { value: string };
-      password: { value: string };
-    };
-    const email = target.email.value;
-    const password = target.password.value;
-
-    dispatch(login({ email, password }));
-
-    target.email.value = '';
-    target.password.value = '';
-  };
-
   return (
-    <div className={cl.auth}>
+    <form className={cl.loginForm} onSubmit={formik.handleSubmit}>
       <h1 className={cl.title}>Авторизация</h1>
-      <form onSubmit={onSubmit}>
-        <label>
-          <span>email: </span>
-          <input type='text' name='email' />
-        </label>
-        <label>
-          <span>password: </span>
-          <input type='password' name='password' />
-        </label>
-        <button>Login</button>
-      </form>
-    </div>
+
+      <input
+        className={cl.email}
+        id='email'
+        type='text'
+        placeholder='email'
+        {...formik.getFieldProps('email')}
+      />
+      {formik.touched.email && formik.errors.email ? (
+        <p className={cl.errorText}>{formik.errors.email}</p>
+      ) : null}
+
+      <input
+        className={cl.password}
+        id='password'
+        type='password'
+        placeholder='password'
+        {...formik.getFieldProps('password')}
+      />
+      {formik.touched.password && formik.errors.password ? (
+        <p className={cl.errorText}>{formik.errors.password}</p>
+      ) : null}
+
+      <button className={cl.login} type='submit'>
+        Войти
+      </button>
+    </form>
   );
 };
 
