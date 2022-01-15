@@ -1,0 +1,50 @@
+header {
+  background-color: #fff4e2;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 60px;
+}
+
+.headerInner {
+  height: 100%;
+  display: flex;
+  padding: 10px 50px 10px 20px;
+  align-items: center;
+}
+
+.burger {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.search {
+  margin-right: 15px;
+}
+
+.login {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.login svg {
+  margin-right: 8px;
+}
+
+.login:hover {
+  color: #e5a040;
+}
+
+.login:hover svg,
+.notification:hover svg {
+  fill: #e5a040;
+}
+
+.notification {
+  cursor: pointer;
+  margin-left: auto;
+}
