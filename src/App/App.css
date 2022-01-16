@@ -1,6 +1,7 @@
 :root {
   --primary: #4683d9;
   --secondary: #ffffff;
+  --border-radius: 8px;
 }
 
 * {

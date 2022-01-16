@@ -5,6 +5,8 @@ export interface ButtonProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  variant: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary';
+  disabled?: boolean;
+  loading?: boolean;
   children: ReactNode;
 }

@@ -15,7 +15,7 @@ export const Header = () => {
         <div className={styles.search}>
           <input type='text' placeholder='Поиск' />
         </div>
-        <Button variant='primary'>Новая запись</Button>
+        <Button variant='secondary'>Новая запись</Button>
         <span className={styles.notification}>
           <NotificationIcon />
         </span>
