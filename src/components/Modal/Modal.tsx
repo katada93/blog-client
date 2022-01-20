@@ -6,6 +6,7 @@ import { ReactComponent as CloseIcon } from './close.svg';
 export const Modal = ({
   isOpen,
   handleClose,
+  fullScreen = false,
   children,
   className,
   ...props
@@ -14,7 +15,11 @@ export const Modal = ({
     <>
       {isOpen && (
         <div className={cn(className, styles.overlay)} {...props}>
-          <div className={styles.window}>
+          <div
+            className={cn(styles.window, {
+              [styles.fullScreen]: fullScreen,
+            })}
+          >
             <span onClick={handleClose} className={styles.close}>
               <CloseIcon />
             </span>

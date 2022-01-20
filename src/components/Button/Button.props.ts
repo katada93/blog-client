@@ -8,5 +8,6 @@ export interface ButtonProps
   variant?: 'primary' | 'secondary';
   disabled?: boolean;
   loading?: boolean;
+  fullWidth?: boolean;
   children: ReactNode;
 }

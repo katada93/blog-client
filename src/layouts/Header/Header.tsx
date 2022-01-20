@@ -4,6 +4,7 @@ import { ReactComponent as PersonIcon } from '../../assets/person.svg';
 import styles from './Header.module.css';
 import { Button, Modal } from '../../components';
 import { useState } from 'react';
+import { Auth } from '../../pages';
 
 export const Header = () => {
   const [showModal, setShowModal] = useState<boolean>(true);
@@ -26,9 +27,9 @@ export const Header = () => {
             <PersonIcon />
             <span>Войти</span>
           </div>
-          <Modal isOpen={showModal} handleClose={() => setShowModal(false)}>
+          <Auth isOpen={showModal} handleClose={() => setShowModal(false)}>
             Auth
-          </Modal>
+          </Auth>
         </div>
       </header>
     </>

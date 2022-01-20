@@ -1,5 +1,4 @@
 .button {
-  max-height: 40px;
   border-radius: var(--border-radius);
   cursor: pointer;
   padding: 10px 15px;
@@ -30,4 +29,8 @@
 .secondary {
   background-color: var(--secondary);
   color: #000000;
+}
+
+.fullWidth {
+  width: 100%;
 }

@@ -6,20 +6,21 @@ export const Button = ({
   variant = 'primary',
   disabled = false,
   loading = false,
+  fullWidth = false,
+  className,
   children,
   ...props
 }: ButtonProps): JSX.Element => {
+  const classes = cn(className, styles.button, {
+    [styles.primary]: variant === 'primary',
+    [styles.secondary]: variant === 'secondary',
+    [styles.disabled]: disabled,
+    [styles.loading]: loading,
+    [styles.fullWidth]: fullWidth,
+  });
+
   return (
-    <button
-      className={cn(styles.button, {
-        [styles.primary]: variant === 'primary',
-        [styles.secondary]: variant === 'secondary',
-        [styles.disabled]: disabled,
-        [styles.loading]: loading,
-      })}
-      disabled={disabled || loading}
-      {...props}
-    >
+    <button className={classes} disabled={disabled || loading} {...props}>
       {children}
     </button>
   );

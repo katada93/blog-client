@@ -1,0 +1,43 @@
+.form {
+  width: 640px;
+  display: grid;
+  grid-template-columns: 212px 1fr;
+}
+
+.image {
+  background-image: url('https://leonardo.osnova.io/b6bd61b5-eb5b-34db-8501-2fcc54cd051b/-/format/webp/');
+  background-color: #fff4e2;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100%;
+  border-radius: 8px 0 0 8px;
+}
+
+.content {
+  min-height: 600px;
+  padding: 24px 50px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500;
+  margin-top: 114px;
+  margin-bottom: 16px;
+}
+
+.actions button {
+  position: relative;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.actions button svg {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
