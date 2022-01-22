@@ -2,12 +2,12 @@ import { ReactComponent as MenuIcon } from '../../assets/menu.svg';
 import { ReactComponent as NotificationIcon } from '../../assets/bell.svg';
 import { ReactComponent as PersonIcon } from '../../assets/person.svg';
 import styles from './Header.module.css';
-import { Button, Modal } from '../../components';
+import { Button } from '../../components';
 import { useState } from 'react';
-import { Auth } from '../../pages';
+import { Auth } from '..';
 
 export const Header = () => {
-  const [showModal, setShowModal] = useState<boolean>(true);
+  const [showAuthModal, setShowAuthModal] = useState<boolean>(true);
 
   return (
     <>
@@ -23,11 +23,14 @@ export const Header = () => {
           <span className={styles.notification}>
             <NotificationIcon />
           </span>
-          <div onClick={() => setShowModal(true)} className={styles.login}>
+          <div onClick={() => setShowAuthModal(true)} className={styles.login}>
             <PersonIcon />
             <span>Войти</span>
           </div>
-          <Auth isOpen={showModal} handleClose={() => setShowModal(false)}>
+          <Auth
+            isOpen={showAuthModal}
+            handleClose={() => setShowAuthModal(false)}
+          >
             Auth
           </Auth>
         </div>
