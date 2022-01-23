@@ -1,9 +1,14 @@
 import * as Yup from 'yup';
 
-export const loginValidator = Yup.object({
-  email: Yup.string().email('Невалидный email!').required('Обязательное поле'),
+export const loginSchema = Yup.object().shape({
+  email: Yup.string().email('Некорректный email').required('Обязательное поле'),
   password: Yup.string()
-    .min(4, 'Пароль должен быть больше 4 и меньше 10 символов')
-    .max(10, 'Пароль должен быть больше 4 и меньше 10 символов')
-    .required('Обязательное поле!'),
+    .min(4, 'Пароль должен быть больше 4 символов')
+    .required('Обязательное поле'),
 });
+
+export const registerSchema = Yup.object()
+  .shape({
+    name: Yup.string().required('Обязательное поле'),
+  })
+  .concat(loginSchema);

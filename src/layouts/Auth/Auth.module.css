@@ -4,6 +4,10 @@
   grid-template-columns: 212px 1fr;
 }
 
+.form button {
+  height: 48px;
+}
+
 .image {
   background-image: url('https://leonardo.osnova.io/b6bd61b5-eb5b-34db-8501-2fcc54cd051b/-/format/webp/');
   background-color: #fff4e2;
@@ -33,7 +37,6 @@
 
 .main button {
   position: relative;
-  height: 48px;
   margin-bottom: 15px;
 }
 
@@ -62,4 +65,18 @@
 
 .link:hover {
   color: #cd192e;
+}
+
+.login,
+.register {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  margin-bottom: 20px;
+}
+
+.errorField {
+  color: #e52e3a;
+  padding-top: 4px;
+  font-size: 12px;
 }
