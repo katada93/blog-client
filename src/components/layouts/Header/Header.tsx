@@ -1,13 +1,13 @@
-import { ReactComponent as MenuIcon } from '../../assets/menu.svg';
-import { ReactComponent as NotificationIcon } from '../../assets/bell.svg';
-import { ReactComponent as PersonIcon } from '../../assets/person.svg';
+import { ReactComponent as MenuIcon } from '../../../assets/menu.svg';
+import { ReactComponent as NotificationIcon } from '../../../assets/bell.svg';
+import { ReactComponent as PersonIcon } from '../../../assets/person.svg';
 import styles from './Header.module.css';
-import { Button } from '../../components';
 import { useState } from 'react';
 import { Auth } from '..';
+import { Button } from '../../ui';
 
 export const Header = () => {
-  const [showAuthModal, setShowAuthModal] = useState<boolean>(true);
+  const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
 
   return (
     <>

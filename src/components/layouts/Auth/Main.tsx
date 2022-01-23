@@ -1,11 +1,11 @@
-import { Button } from '../../components';
-import { ReactComponent as MailIcon } from '../../assets/mail.svg';
-import { ReactComponent as GoogleIcon } from '../../assets/google.svg';
-import { ReactComponent as GithubIcon } from '../../assets/github.svg';
+import { ReactComponent as MailIcon } from '../../../assets/mail.svg';
+import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
+import { ReactComponent as GithubIcon } from '../../../assets/github.svg';
 import styles from './Auth.module.css';
 import { Login } from './Login';
 import { Register } from './Register';
 import { FormType } from '.';
+import { Button } from '../../ui';
 
 interface FormProps {
   formType: FormType;

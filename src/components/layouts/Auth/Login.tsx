@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { Button } from '../../components';
 import styles from './Auth.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '../../utils/validators';
+import { loginSchema } from '../../../utils/validators';
+import { Button } from '../../ui';
 
 interface LoginData {
   email: string;

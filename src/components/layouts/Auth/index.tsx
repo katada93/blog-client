@@ -1,9 +1,9 @@
-import { Modal } from '../../components';
 import styles from './Auth.module.css';
-import { ModalProps } from '../../components/Modal/Modal.props';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { Main } from './Main';
+import { ModalProps } from '../../ui/Modal/Modal.props';
+import { Modal } from '../../ui';
 
 export type FormStatus = 'login' | 'register';
 export type FormType = 'main' | 'login' | 'register';

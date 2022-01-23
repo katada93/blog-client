@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { Button } from '../../components';
 import styles from './Auth.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { registerSchema } from '../../utils/validators';
+import { registerSchema } from '../../../utils/validators';
+import { Button } from '../../ui';
 
 interface RegisterData {
   name: string;
