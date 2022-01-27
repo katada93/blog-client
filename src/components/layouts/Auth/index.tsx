@@ -5,12 +5,11 @@ import { Main } from './Main';
 import { ModalProps } from '../../ui/Modal/Modal.props';
 import { Modal } from '../../ui';
 
-export type FormStatus = 'login' | 'register';
 export type FormType = 'main' | 'login' | 'register';
 
-export const Auth = ({ isOpen, handleClose }: ModalProps) => {
+export const Auth: React.FC<ModalProps> = ({ isOpen, handleClose }) => {
   const isTablet = useMediaQuery({ query: '(max-width: 867px)' });
-  const [status, setStatus] = useState<FormStatus>('register');
+  const [status, setStatus] = useState<FormType>('register');
   const [formType, setFormType] = useState<FormType>('main');
 
   const toggleStatus = () => {
@@ -33,7 +32,7 @@ export const Auth = ({ isOpen, handleClose }: ModalProps) => {
           <h2 className={styles.title}>
             {status === 'login' ? 'Вход в аккаунт' : 'Регистрация'}
           </h2>
-          <Main formType={formType} onToggleFormType={onToggleFormType} />
+          <Main formType={formType} onToggle={onToggleFormType} />
           <div className={styles.footer}>
             {status !== 'login' && 'Есть аккаунт? '}
             <span className={styles.link} onClick={toggleStatus}>

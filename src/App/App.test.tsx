@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
 
-it('render App works', () => {
-  render(<App />);
+describe('App render', () => {
+  it('render App works', () => {
+    const { container } = render(<App />);
 
-  const text = screen.getByText('Новая запись');
-  expect(text).toBeInTheDocument();
+    expect(container.querySelector('header')).toBeInTheDocument();
+  });
 });

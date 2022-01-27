@@ -6,35 +6,30 @@ import { useState } from 'react';
 import { Auth } from '..';
 import { Button } from '../../ui';
 
-export const Header = () => {
-  const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
+export const Header: React.FC = () => {
+  const [showAuth, setShowAuth] = useState<boolean>(false);
 
   return (
-    <>
-      <header>
-        <div className={styles.headerInner}>
-          <span className={styles.burger}>
-            <MenuIcon />
-          </span>
-          <div className={styles.search}>
-            <input type='text' placeholder='Поиск' />
-          </div>
-          <Button variant='secondary'>Новая запись</Button>
-          <span className={styles.notification}>
-            <NotificationIcon />
-          </span>
-          <div onClick={() => setShowAuthModal(true)} className={styles.login}>
-            <PersonIcon />
-            <span>Войти</span>
-          </div>
-          <Auth
-            isOpen={showAuthModal}
-            handleClose={() => setShowAuthModal(false)}
-          >
-            Auth
-          </Auth>
+    <header>
+      <div className={styles.headerInner}>
+        <span className={styles.burger}>
+          <MenuIcon />
+        </span>
+        <div className={styles.search}>
+          <input type='text' placeholder='Поиск' />
         </div>
-      </header>
-    </>
+        <Button variant='secondary'>Новая запись</Button>
+        <span className={styles.notification}>
+          <NotificationIcon />
+        </span>
+        <div onClick={() => setShowAuth(true)} className={styles.login}>
+          <PersonIcon />
+          <span>Войти</span>
+        </div>
+        <Auth isOpen={showAuth} handleClose={() => setShowAuth(false)}>
+          Auth
+        </Auth>
+      </div>
+    </header>
   );
 };

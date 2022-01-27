@@ -2,28 +2,28 @@ import { ReactComponent as MailIcon } from '../../../assets/mail.svg';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as GithubIcon } from '../../../assets/github.svg';
 import styles from './Auth.module.css';
-import { Login } from './Login';
-import { Register } from './Register';
-import { FormType } from '.';
+import { LoginForm } from './LoginForm';
+import { RegisterForm } from './RegisterForm';
 import { Button } from '../../ui';
+import { FormType } from '.';
 
-interface FormProps {
+interface MainProps {
   formType: FormType;
-  onToggleFormType: () => void;
+  onToggle: () => void;
 }
 
-export const Main = ({ formType, onToggleFormType }: FormProps) => {
+export const Main: React.FC<MainProps> = ({ formType, onToggle }) => {
   if (formType === 'login') {
-    return <Login />;
+    return <LoginForm />;
   }
 
   if (formType === 'register') {
-    return <Register />;
+    return <RegisterForm />;
   }
 
   return (
     <div className={styles.main}>
-      <Button onClick={onToggleFormType} variant='secondary' fullWidth>
+      <Button onClick={onToggle} variant='secondary' fullWidth>
         <MailIcon /> <span>Почта</span>
       </Button>
       <Button variant='secondary' fullWidth>

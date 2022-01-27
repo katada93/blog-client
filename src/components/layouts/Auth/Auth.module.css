@@ -8,14 +8,30 @@
   height: 48px;
 }
 
+.form input {
+  height: 46px;
+  padding: 0 10px;
+  background-color: #f2f2f2;
+  border: none;
+  font-size: 16px;
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+}
+
+.form input:focus {
+  outline: none;
+  border: 1px solid #4683d9;
+}
+
 .image {
-  background-image: url('https://leonardo.osnova.io/b6bd61b5-eb5b-34db-8501-2fcc54cd051b/-/format/webp/');
-  background-color: #fff4e2;
+  background-image: url('https://leonardo.osnova.io/e09fd210-816b-01d6-728d-dbf1ad64e29c/-/format/webp/');
+  background-color: #feebef;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
   height: 100%;
   border-radius: 8px 0 0 8px;
+  padding: 25px 30px;
 }
 
 .content {

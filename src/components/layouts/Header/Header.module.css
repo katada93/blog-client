@@ -1,5 +1,5 @@
 header {
-  background-color: #fff4e2;
+  background-color: var(--color-background);
   position: fixed;
   width: 100%;
   top: 0;
@@ -36,12 +36,12 @@ header {
 }
 
 .login:hover {
-  color: #e5a040;
+  color: #e55c78;
 }
 
 .login:hover svg,
 .notification:hover svg {
-  fill: #e5a040;
+  fill: #e55c78;
 }
 
 .notification {

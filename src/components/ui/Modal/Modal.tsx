@@ -3,23 +3,22 @@ import cn from 'classnames';
 import { ModalProps } from './Modal.props';
 import { ReactComponent as CloseIcon } from './close.svg';
 
-export const Modal = ({
+export const Modal: React.FC<ModalProps> = ({
   isOpen,
   handleClose,
   fullScreen = false,
   children,
-  className,
   ...props
-}: ModalProps): JSX.Element => {
+}) => {
+  const classes = cn(styles.window, {
+    [styles.fullScreen]: fullScreen,
+  });
+
   return (
     <>
       {isOpen && (
-        <div className={cn(className, styles.overlay)} {...props}>
-          <div
-            className={cn(styles.window, {
-              [styles.fullScreen]: fullScreen,
-            })}
-          >
+        <div className={cn(styles.overlay)} {...props}>
+          <div className={classes}>
             <span onClick={handleClose} className={styles.close}>
               <CloseIcon />
             </span>

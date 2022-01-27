@@ -2,6 +2,7 @@
   --primary: #4683d9;
   --secondary: #ffffff;
   --border-radius: 8px;
+  --color-background: #feebef;
 }
 
 * {
@@ -18,7 +19,8 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ebebeb;
+  background-color: #f2f2f2;
+  min-height: 100%;
 }
 
 img {

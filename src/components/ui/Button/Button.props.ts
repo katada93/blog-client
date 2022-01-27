@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, ReactNode, ButtonHTMLAttributes } from 'react';
+import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 
 export interface ButtonProps
   extends DetailedHTMLProps<
@@ -9,5 +9,4 @@ export interface ButtonProps
   disabled?: boolean;
   loading?: boolean;
   fullWidth?: boolean;
-  children: ReactNode;
 }
