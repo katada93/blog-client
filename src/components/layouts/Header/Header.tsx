@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
           <PersonIcon />
           <span>Войти</span>
         </div>
-        <Auth isOpen={showAuth} handleClose={() => setShowAuth(false)}>
+        <Auth isOpen={showAuth} onClose={() => setShowAuth(false)}>
           Auth
         </Auth>
       </div>

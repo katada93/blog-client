@@ -8,10 +8,8 @@ export const login = createAsyncThunk(
     try {
       const response = await API.login(params.email, params.password);
       return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(
-        'Не удалось авторизоваться. Проверьте данные!'
-      );
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -41,7 +39,7 @@ const initialState: IAuthState = {
 };
 
 export const authSlice = createSlice({
-  name: 'posts',
+  name: 'auth',
   initialState,
   reducers: {},
   extraReducers: {
@@ -55,8 +53,9 @@ export const authSlice = createSlice({
       state.loading = false;
       state.error = '';
     },
-    [login.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
+    [login.rejected.type]: (state, action: PayloadAction<any>) => {
+      console.log(action.payload.message);
+      state.error = action.payload.message;
       state.loading = false;
     },
     [me.fulfilled.type]: (state, action: PayloadAction<IUser>) => {

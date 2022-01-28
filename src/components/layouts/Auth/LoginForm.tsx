@@ -3,6 +3,9 @@ import styles from './Auth.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../../utils/validators';
 import { Button } from '../../ui';
+import { login } from '../../../features/slices/auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../features/store';
 
 interface LoginFormData {
   email: string;
@@ -15,23 +18,32 @@ export const LoginForm: React.FC = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  console.log(formState);
+  const dispatch = useDispatch<AppDispatch>();
+  const { isAuth, user, error } = useSelector(({ auth }: RootState) => auth);
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    try {
+      dispatch(login(data));
+    } catch (error: any) {
+      console.warn('Register error', error.message);
+    }
     reset();
   });
 
   return (
     <form className={styles.login} onSubmit={onSubmit}>
-      <input
-        autoFocus
-        {...register('email')}
-        type='email'
-        placeholder='Почта'
-      />
+      <label>
+        <input
+          autoFocus
+          {...register('email')}
+          type='email'
+          placeholder='Почта'
+        />
+      </label>
       <p className={styles.errorField}>{formState.errors.email?.message}</p>
-      <input {...register('password')} type='password' placeholder='Пароль' />
+      <label>
+        <input {...register('password')} type='password' placeholder='Пароль' />
+      </label>
       <p className={styles.errorField}>{formState.errors.password?.message}</p>
       <Button disabled={!formState.isValid || formState.isSubmitting}>
         Войти

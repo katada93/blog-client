@@ -5,7 +5,7 @@ import { ReactComponent as CloseIcon } from './close.svg';
 
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
-  handleClose,
+  onClose,
   fullScreen = false,
   children,
   ...props
@@ -17,9 +17,9 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <>
       {isOpen && (
-        <div className={cn(styles.overlay)} {...props}>
-          <div className={classes}>
-            <span onClick={handleClose} className={styles.close}>
+        <div onClick={onClose} className={cn(styles.overlay)} {...props}>
+          <div onClick={(e) => e.stopPropagation()} className={classes}>
+            <span onClick={onClose} className={styles.close}>
               <CloseIcon />
             </span>
             <div className={styles.body}>{children}</div>
